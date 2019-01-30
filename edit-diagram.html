@@ -158,11 +158,6 @@
 			
 			req.open(verb, url, true);
 			
-			var username = document.getElementById('username').value;
-			var pass = document.getElementById('password').value;
-			req.setRequestHeader('Authorization', 'Basic ' +
-				btoa(username + ':' + pass));
-			
 			req.send(data);
 		}
 		
@@ -243,16 +238,14 @@
 		
 		function onload()
 		{
-			document.getElementById('username').value = urlParams['user'] || '';
-			document.getElementById('password').value = urlParams['pass'] || '';
 			document.getElementById('org').value = urlParams['org'] || '';
 			document.getElementById('repo').value = urlParams['repo'] || '';
 			document.getElementById('path').value = urlParams['path'] || '';
 			document.getElementById('ref').value = urlParams['ref'] || 'master';
 			
-			document.getElementById((urlParams['username'] == null) ?
-				'username' : ((urlParams['password'] == null) ?
-				'password' : 'button')).focus();
+			document.getElementById((urlParams['path'] == null) ?
+				'path' : ((urlParams['path'] == null) ?
+				'path' : 'button')).focus();
 				
 			document.addEventListener('keydown', function(evt)
 			{
@@ -272,8 +265,6 @@
 <body onload="onload();">
 <h2>Diagrams for GitHub</h2>
 <table>
-<tr><td>Username:</td><td><input id="username" type="text"/></td></tr>
-<tr><td>Password:</td><td><input id="password" type="password"/></td></tr>
 <tr><td>Organization:</td><td><input id="org" type="org"/></td></tr>
 <tr><td>Repository:</td><td><input id="repo" type="text"/></td></tr>
 <tr><td>Path:</td><td><input id="path" type="text"/></td></tr>
@@ -287,3 +278,4 @@
 Powered by <a href="https://www.draw.io" target="_blank">draw.io</a>
 </body>
 </html>
+
